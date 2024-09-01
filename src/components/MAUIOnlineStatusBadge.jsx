@@ -4,7 +4,7 @@ import { AlertCircle, CheckCircle } from 'lucide-react';
 const MAUIOnlineStatusBadge = ({ refreshInterval = 60000 }) => {
   const [status, setStatus] = useState('unknown');
   const [loading, setLoading] = useState(true);
-  const url = 'http://localhost:3000/status'; // Updated URL
+  const url = 'https://ma-ui-status-backend.herokuapp.com/status';
 
   const checkStatus = async () => {
     setLoading(true);
