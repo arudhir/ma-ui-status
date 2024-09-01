@@ -4,13 +4,14 @@ import { AlertCircle, CheckCircle } from 'lucide-react';
 const MAUIOnlineStatusBadge = ({ refreshInterval = 60000 }) => {
   const [status, setStatus] = useState('unknown');
   const [loading, setLoading] = useState(true);
-  const url = 'https://uionline.detma.org/Claimant/Core/Login.ASPX';
+  const url = 'http://localhost:3000/status'; // Updated URL
 
   const checkStatus = async () => {
     setLoading(true);
     try {
-      const response = await fetch(url, { mode: 'no-cors' });
-      setStatus('up');
+      const response = await fetch(url);
+      const data = await response.json();
+      setStatus(data.status);
     } catch (error) {
       setStatus('down');
     }
@@ -46,5 +47,3 @@ const MAUIOnlineStatusBadge = ({ refreshInterval = 60000 }) => {
 };
 
 export default MAUIOnlineStatusBadge;
-
-
